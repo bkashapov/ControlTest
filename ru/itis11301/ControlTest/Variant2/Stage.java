@@ -14,7 +14,7 @@ public abstract class Stage {
         return name;
     }
 
-    public Status updateStatus() throws RejectException{
+    public void updateStatus() throws RejectException{
         Random r = new Random();
         if (status == Status.PLANNED) {
             status = (r.nextInt(20) + 1) == 1 ? Status.REJECTED : Status.IN_PROGRESS;
@@ -28,8 +28,5 @@ public abstract class Stage {
         if (status == Status.REJECTED) {
             throw new RejectException("Этап забракован");
         }
-
-        return null;
-
     }
 }
